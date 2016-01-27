@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="@string/notification">
+        <SwitchPreference
+            android:key="daily_reminder"
+            android:summary="@string/notify_at_1pm"
+            android:title="@string/daily_reminder"/>
+    </PreferenceCategory>
+</PreferenceScreen>

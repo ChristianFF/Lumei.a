@@ -1,3 +1,38 @@
 <resources>
     <string name="app_name">Lumei.a</string>
+    <string name="error">Something went error!</string>
+    <string name="retry">Try again</string>
+    <string name="about">About</string>
+    <string name="save">save</string>
+    <string name="share">share</string>
+    <string name="save_failed">Save failed!</string>
+    <string name="save_succeed">Save success!</string>
+    <string name="browser_open_failed">Can not find any app to open the link!</string>
+    <string name="refresh">Refresh</string>
+    <string name="copy_url">Copy url</string>
+    <string name="open_in_browser">Open in browser</string>
+    <string name="copy_success">Copy success</string>
+    <string name="copy_failed">Copy failed</string>
+    <string name="gank.io">Gank.io</string>
+    <string name="my_github">My GitHub: https://githubi.com/ChristianFF</string>
+    <string name="introduction">Lumei.a is an unofficial client of gank.io,updates a picture,a short video and a lot of programmer knowledge in every weekday.</string>
+    <string name="quit_ok">OK</string>
+    <string name="quit_cancel">Cancel</string>
+    <string name="quit">Quit</string>
+    <string name="want_quit">Do you want quit the app?</string>
+    <string name="Introduction">Introduction</string>
+    <string name="about_me">About me</string>
+    <string name="github_lumeia">https://github.com/ChristianFF/Lumei.a</string>
+    <string name="video_error">Can not find video!</string>
+    <string name="setting">Setting</string>
+    <string name="notification">Notification</string>
+    <string name="daily_reminder">Daily Reminder</string>
+    <string name="notify_at_1pm">Send Notification at 1 p.m.</string>
+    <string name="meizi_notification_message">Girls are ready!Come on,Baby!</string>
+    <string name="no_more_data">No more data!~</string>
+    <string name="catch_meizi">确定捕获这只野生的妹纸么?</string>
+    <string name="find_meizi">发现妹子</string>
+    <string name="transfer">放生~</string>
+    <string name="throw_master_ball">投出大师球!</string>
+
 </resources>

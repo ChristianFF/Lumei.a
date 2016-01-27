@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">Lumei.a</string>
+    <string name="error">卧槽，出错了!</string>
+    <string name="retry">再一次</string>
+    <string name="about">关于Lumei.a</string>
+    <string name="save">捕捉妹子</string>
+    <string name="share">分享妹子</string>
+    <string name="save_failed">你是个好人!妹子拒绝了你的请求!</string>
+    <string name="save_succeed">抓捕成功!妹子已经躺在你的图库里了!</string>
+    <string name="browser_open_failed">没有找到可以打开该链接的其他应用!</string>
+    <string name="refresh">刷新</string>
+    <string name="copy_url">复制链接</string>
+    <string name="open_in_browser">在浏览器中打开</string>
+    <string name="copy_success">复制成功</string>
+    <string name="copy_failed">复制失败</string>
+    <string name="gank.io">干货集中营</string>
+    <string name="my_github">我的GitHub: https://github.com/ChristianFF</string>
+    <string name="introduction">Lumei.a是Material Design风格的干货集中营的非官方客户端,每天自动更新一张精选妹纸图、一个小视频、一系列精选程序猿干货（周末不更新)</string>
+    <string name="quit_ok">泪奔</string>
+    <string name="quit_cancel">我再想想</string>
+    <string name="quit">退出</string>
+    <string name="want_quit">你要离开我了么?</string>
+    <string name="Introduction">项目介绍</string>
+    <string name="about_me">关于我</string>
+    <string name="setting">设置</string>
+    <string name="notification">通知</string>
+    <string name="daily_reminder">每日提醒</string>
+    <string name="notify_at_1pm">每日中午1点推送通知提醒</string>
+    <string name="meizi_notification_message">妹子已经饥渴难耐了!快来吧!</string>
+    <string name="github_lumeia">https://github.com/ChristianFF/Lumei.a</string>
+    <string name="video_error">未找到视频地址!</string>
+    <string name="no_more_data">木有更多数据了~</string>
+    <string name="catch_meizi">确定捕获这只野生的妹纸么?</string>
+    <string name="find_meizi">发现妹子</string>
+    <string name="transfer">放生~</string>
+
+</resources>
