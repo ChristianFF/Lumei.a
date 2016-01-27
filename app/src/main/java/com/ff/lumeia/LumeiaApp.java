@@ -11,8 +11,8 @@ import com.litesuits.orm.LiteOrm;
  */
 public class LumeiaApp extends Application {
     private static final String DB_NAME = "Lumei.a.db";
-    private static Context appContext;
-    private static LiteOrm myDatabase;
+    public static Context appContext;
+    public static LiteOrm myDatabase;
 
     @Override
     public void onCreate() {

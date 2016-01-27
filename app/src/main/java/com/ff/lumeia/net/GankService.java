@@ -14,7 +14,7 @@ import rx.Observable;
  * Created by feifan on 16/1/27.
  * Contacts me:404619986@qq.com
  */
-public interface GankRetrofit {
+public interface GankService {
     @GET("data/福利/" + LumeiaConfig.MEIZHI_SIZE + "/{page}")
     Observable<MeiziData> getMeiziData(@Path("page") int page);
 
