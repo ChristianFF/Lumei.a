@@ -2,6 +2,7 @@ package com.ff.lumeia.presenter;
 
 import android.content.Context;
 
+import com.ff.lumeia.BuildConfig;
 import com.ff.lumeia.LumeiaApp;
 import com.ff.lumeia.model.MeiziData;
 import com.ff.lumeia.model.RestingVideoData;
@@ -20,6 +21,7 @@ import rx.functions.Func2;
 import rx.schedulers.Schedulers;
 
 /**
+ * 主界面presenter
  * Created by feifan on 16/1/26.
  * Contacts me:404619986@qq.com
  */
@@ -65,6 +67,9 @@ public class MainPresenter extends BasePresenter<IMainView> {
                 }, new Action1<Throwable>() {
                     @Override
                     public void call(Throwable throwable) {
+                        if (BuildConfig.DEBUG) {
+                            throwable.printStackTrace();
+                        }
                         iView.showErrorView();
                         iView.hideProgress();
                     }

@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
+import butterknife.OnClick;
 
 /**
  * 主界面
@@ -35,6 +36,11 @@ public class MainActivity extends ToolbarActivity<MainPresenter> implements IMai
     SwipeRefreshLayout swipeRefreshLayout;
     @Bind(R.id.fab)
     FloatingActionButton fab;
+
+    @OnClick(R.id.fab)
+    void onFabClick() {
+        //TODO go to gank activity
+    }
 
     private MainPresenter mainPresenter;
 
@@ -102,6 +108,10 @@ public class MainActivity extends ToolbarActivity<MainPresenter> implements IMai
         });
     }
 
+    private void recyclerViewScrollToTop() {
+        recyclerView.scrollToPosition(0);
+    }
+
     @Override
     public void showProgress() {
         if (!swipeRefreshLayout.isRefreshing()) {
@@ -150,10 +160,6 @@ public class MainActivity extends ToolbarActivity<MainPresenter> implements IMai
         }
     }
 
-    private void recyclerViewScrollToTop() {
-        recyclerView.scrollToPosition(0);
-    }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         return super.onCreateOptionsMenu(menu);
@@ -163,7 +169,6 @@ public class MainActivity extends ToolbarActivity<MainPresenter> implements IMai
     public boolean onOptionsItemSelected(MenuItem item) {
         return super.onOptionsItemSelected(item);
     }
-
 
     @Override
     public void onRefresh() {

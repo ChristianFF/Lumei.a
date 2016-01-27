@@ -16,7 +16,7 @@
         <ImageView
             android:id="@+id/img_meizi"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/img_height"
             android:layout_margin="@dimen/normal_spacing"
             android:scaleType="centerCrop"/>
 
