@@ -1,10 +1,16 @@
 package com.ff.lumeia.model.entity;
 
+import com.litesuits.orm.db.annotation.Column;
+import com.litesuits.orm.db.annotation.Table;
+
+import java.util.Date;
+
 /**
  * 干货model
  * Created by feifan on 16/1/27.
  * Contacts me:404619986@qq.com
  */
+@Table("Ganks")
 public class Gank extends Fundation {
 
     /**
@@ -19,14 +25,22 @@ public class Gank extends Fundation {
      * updatedAt : 2016-01-26T04:02:35.872Z
      */
 
+    @Column("Author")
     public String who;
-    public String publishedAt;
+    @Column("Description")
     public String desc;
+    @Column("Type")
     public String type;
+    @Column("URL")
     public String url;
+    @Column("Used")
     public boolean used;
-    public String createdAt;
-    public String updatedAt;
+    @Column("CreateDate")
+    public Date createdAt;
+    @Column("UpdateDate")
+    public Date updatedAt;
+    @Column("PublishedDate")
+    public Date publishedAt;
 
     @Override
     public String toString() {

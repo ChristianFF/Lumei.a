@@ -1,5 +1,8 @@
 package com.ff.lumeia.model.entity;
 
+import com.litesuits.orm.db.annotation.Column;
+import com.litesuits.orm.db.annotation.Table;
+
 import java.util.Date;
 
 /**
@@ -7,6 +10,7 @@ import java.util.Date;
  * Created by feifan on 16/1/27.
  * Contacts me:404619986@qq.com
  */
+@Table("Meizis")
 public class Meizi extends Fundation {
 
     /**
@@ -21,13 +25,21 @@ public class Meizi extends Fundation {
      * updatedAt : 2016-01-26T04:02:34.897Z
      */
 
+    @Column("Author")
     public String who;
+    @Column("Description")
     public String desc;
+    @Column("Type")
     public String type;
+    @Column("URL")
     public String url;
+    @Column("Used")
     public boolean used;
+    @Column("CreateDate")
     public Date createdAt;
+    @Column("UpdateDate")
     public Date updatedAt;
+    @Column("PublishedDate")
     public Date publishedAt;
 
     @Override

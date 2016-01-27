@@ -10,8 +10,9 @@ import com.ff.lumeia.model.entity.Meizi;
 import com.ff.lumeia.net.MyRetrofitClient;
 import com.ff.lumeia.view.IMainView;
 import com.litesuits.orm.db.assit.QueryBuilder;
-import com.litesuits.orm.db.model.ConflictAlgorithm;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import rx.Observable;
@@ -36,7 +37,7 @@ public class MainPresenter extends BasePresenter<IMainView> {
             throw new RuntimeException("List is null!");
         }
         QueryBuilder<Meizi> queryBuilder = new QueryBuilder<>(Meizi.class);
-        queryBuilder.appendOrderDescBy("publishedAt");
+        queryBuilder.appendOrderDescBy("PublishedDate");
         queryBuilder.limit(0, 10);
         meiziList.addAll(LumeiaApp.myDatabase.query(queryBuilder));
     }
@@ -48,6 +49,7 @@ public class MainPresenter extends BasePresenter<IMainView> {
                 new Func2<MeiziData, RestingVideoData, MeiziData>() {
                     @Override
                     public MeiziData call(MeiziData meiziData, RestingVideoData restingVideoData) {
+                        saveMeiziData(meiziData);
                         return createMeiziDataWithRestingVideoDesc(meiziData, restingVideoData);
                     }
                 })
@@ -59,7 +61,6 @@ public class MainPresenter extends BasePresenter<IMainView> {
                         if (meiziData.results.size() == 0) {
                             iView.showNoMoreData();
                         } else {
-                            saveMeiziData(meiziData);
                             iView.showMeiziList(meiziData.results);
                         }
                         iView.hideProgress();
@@ -77,7 +78,13 @@ public class MainPresenter extends BasePresenter<IMainView> {
     }
 
     private void saveMeiziData(MeiziData meiziData) {
-        LumeiaApp.myDatabase.insert(meiziData.results, ConflictAlgorithm.Replace);
+        Collections.sort(meiziData.results, new Comparator<Meizi>() {
+            @Override
+            public int compare(Meizi meizi, Meizi t1) {
+                return t1.publishedAt.compareTo(meizi.publishedAt);
+            }
+        });
+        LumeiaApp.myDatabase.save(meiziData.results);
     }
 
     private MeiziData createMeiziDataWithRestingVideoDesc(MeiziData meiziData, RestingVideoData restingVideoData) {
