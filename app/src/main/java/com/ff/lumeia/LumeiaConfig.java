@@ -8,4 +8,7 @@ package com.ff.lumeia;
 public class LumeiaConfig {
     public static final int MEIZHI_SIZE = 20;
     public static final int GANK_SIZE = 40;
+
+    public static final String MEIZHI_PIC = "meizhi_pic";
+    public static final String IMG_TRANSITION_NAME = "img_transition_name";
 }
