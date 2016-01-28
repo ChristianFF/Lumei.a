@@ -11,7 +11,7 @@ import java.util.Date;
  * Contacts me:404619986@qq.com
  */
 @Table("Ganks")
-public class Gank extends Fundation {
+public class Gank extends Foundation {
 
     /**
      * who : 小梁

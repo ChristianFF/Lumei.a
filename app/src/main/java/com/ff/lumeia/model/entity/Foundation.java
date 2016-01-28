@@ -12,7 +12,7 @@ import java.io.Serializable;
  * Created by feifan on 16/1/27.
  * Contacts me:404619986@qq.com
  */
-public class Fundation implements Serializable {
+public class Foundation implements Serializable {
     @PrimaryKey(AssignType.AUTO_INCREMENT)
     @Column("ID")
     public long id;

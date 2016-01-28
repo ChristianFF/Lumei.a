@@ -39,7 +39,7 @@ public class MainActivity extends ToolbarActivity<MainPresenter> implements IMai
 
     @OnClick(R.id.fab)
     void onFabClick() {
-        //TODO go to gank activity
+        goGankActivity();
     }
 
     private static final int PRELOAD_SIZE = 4;
@@ -120,6 +120,16 @@ public class MainActivity extends ToolbarActivity<MainPresenter> implements IMai
 
     private void recyclerViewScrollToTop() {
         recyclerView.scrollToPosition(0);
+    }
+
+    @Override
+    public void goPictureActivity() {
+
+    }
+
+    @Override
+    public void goGankActivity() {
+
     }
 
     @Override
