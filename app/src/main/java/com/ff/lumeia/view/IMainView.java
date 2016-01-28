@@ -14,5 +14,6 @@ public interface IMainView extends IBaseView {
     void hideProgress();
     void showErrorView();
     void showNoMoreData();
-    void showMeiziList(List<Meizi> meiziList);
+
+    void showMeiziList(List<Meizi> meiziList, boolean clean);
 }
