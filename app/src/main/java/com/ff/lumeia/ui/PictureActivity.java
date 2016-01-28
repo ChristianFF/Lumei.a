@@ -61,7 +61,7 @@ public class PictureActivity extends ToolbarActivity<PicturePresenter> implement
 
     private void getIntentData() {
         Intent intent = getIntent();
-        meizi = (Meizi) intent.getSerializableExtra(LumeiaConfig.MEIZHI_PIC);
+        meizi = (Meizi) intent.getSerializableExtra(LumeiaConfig.MEIZI);
         setTitle(meizi.desc);
     }
 

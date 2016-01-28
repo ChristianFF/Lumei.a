@@ -43,7 +43,7 @@ public class MainActivity extends ToolbarActivity<MainPresenter> implements IMai
         goGankActivity();
     }
 
-    private static final int PRELOAD_SIZE = 4;
+    private static final int PRELOAD_SIZE = 6;
 
     private MainPresenter mainPresenter;
 

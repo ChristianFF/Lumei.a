@@ -21,14 +21,14 @@ public class GankData extends BaseData {
         @SerializedName("iOS")
         public List<Gank> IOSList;
         @SerializedName("福利")
-        public List<Gank> MeiziList;
+        public List<Gank> meiziList;
         @SerializedName("拓展资源")
-        public List<Gank> ExtendedResourceList;
+        public List<Gank> extendedResourceList;
         @SerializedName("瞎推荐")
-        public List<Gank> FuckingRecommandationList;
+        public List<Gank> fuckingRecommendationList;
         @SerializedName("App")
         public List<Gank> appList;
         @SerializedName("前端")
-        public List<Gank> FrontEndList;
+        public List<Gank> frontEndList;
     }
 }

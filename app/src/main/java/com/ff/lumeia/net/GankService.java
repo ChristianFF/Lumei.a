@@ -15,10 +15,10 @@ import rx.Observable;
  * Contacts me:404619986@qq.com
  */
 public interface GankService {
-    @GET("data/福利/" + LumeiaConfig.MEIZHI_SIZE + "/{page}")
+    @GET("data/福利/" + LumeiaConfig.MEIZI_SIZE + "/{page}")
     Observable<MeiziData> getMeiziData(@Path("page") int page);
 
-    @GET("data/休息视频/" + LumeiaConfig.MEIZHI_SIZE + "/{page}")
+    @GET("data/休息视频/" + LumeiaConfig.MEIZI_SIZE + "/{page}")
     Observable<RestingVideoData> getRestingVideoData(@Path("page") int page);
 
     @GET("day/{year}/{month}/{day}")
