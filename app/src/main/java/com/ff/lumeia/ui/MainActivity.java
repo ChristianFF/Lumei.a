@@ -7,7 +7,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 
 import com.ff.lumeia.R;
 import com.ff.lumeia.model.entity.Meizi;
@@ -23,12 +22,13 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.OnClick;
 
+
 /**
  * 主界面
  * Created by feifan on 16/1/26.
  * Contacts me:404619986@qq.com
  */
-public class MainActivity extends ToolbarActivity<MainPresenter> implements IMainView, SwipeRefreshLayout.OnRefreshListener {
+public class MainActivity extends ToolbarActivity<MainPresenter> implements IMainView {
 
     @Bind(R.id.recycler_view)
     RecyclerView recyclerView;
@@ -39,15 +39,16 @@ public class MainActivity extends ToolbarActivity<MainPresenter> implements IMai
 
     @OnClick(R.id.fab)
     void onFabClick() {
-        //TODO go to gank activity
+        goGankActivity();
     }
+
+    private static final int PRELOAD_SIZE = 4;
 
     private MainPresenter mainPresenter;
 
     private List<Meizi> meiziList;
 
     private int page = 1;
-    private boolean isRefresh = false;
     private MeiziAdapter meiziAdapter;
 
     @Override
@@ -83,33 +84,52 @@ public class MainActivity extends ToolbarActivity<MainPresenter> implements IMai
         recyclerView.setLayoutManager(layoutManager);
         meiziAdapter = new MeiziAdapter(this, meiziList);
         recyclerView.setAdapter(meiziAdapter);
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+
+                if (isReachBottom((LinearLayoutManager) layoutManager) && dy > 0) {
+                    page++;
+                    mainPresenter.requestMeiziData(page, false);
+                }
+            }
+        });
+    }
+
+    private boolean isReachBottom(LinearLayoutManager layoutManager) {
+        int lastVisibleItem = layoutManager.findLastVisibleItemPosition();
+        int totalItemCount = meiziAdapter.getItemCount();
+        return lastVisibleItem >= totalItemCount - PRELOAD_SIZE;
     }
 
     private void setUpSwipeRefreshLayout() {
         swipeRefreshLayout.setColorSchemeResources(R.color.colorPrimary,
                 R.color.colorAccent,
                 R.color.colorAccentLight);
-        swipeRefreshLayout.setOnRefreshListener(this);
-        swipeRefreshLayout.post(new Runnable() {
-            @Override
-            public void run() {
-                swipeRefreshLayout.setRefreshing(true);
-                mainPresenter.requestMeiziData(page);
-            }
+        swipeRefreshLayout.setOnRefreshListener(() -> {
+            page = 1;
+            mainPresenter.requestMeiziData(page, true);
         });
+        swipeRefreshLayout.postDelayed(() -> mainPresenter.requestMeiziData(page, true), 256);
     }
 
     private void setUpToolbar() {
-        toolbar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                recyclerViewScrollToTop();
-            }
-        });
+        toolbar.setOnClickListener(view -> recyclerViewScrollToTop());
     }
 
     private void recyclerViewScrollToTop() {
         recyclerView.scrollToPosition(0);
+    }
+
+    @Override
+    public void goPictureActivity() {
+
+    }
+
+    @Override
+    public void goGankActivity() {
+
     }
 
     @Override
@@ -133,12 +153,7 @@ public class MainActivity extends ToolbarActivity<MainPresenter> implements IMai
                 getString(R.string.error),
                 Snackbar.LENGTH_INDEFINITE,
                 getString(R.string.retry),
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        mainPresenter.requestMeiziData(page);
-                    }
-                });
+                view -> mainPresenter.requestMeiziData(page, true));
     }
 
     @Override
@@ -147,13 +162,11 @@ public class MainActivity extends ToolbarActivity<MainPresenter> implements IMai
     }
 
     @Override
-    public void showMeiziList(List<Meizi> meizis) {
-        page++;
-        if (isRefresh) {
+    public void showMeiziList(List<Meizi> meizis, boolean clean) {
+        if (clean) {
             meiziList.clear();
             meiziList.addAll(meizis);
             meiziAdapter.notifyDataSetChanged();
-            isRefresh = false;
         } else {
             meiziList.addAll(meizis);
             meiziAdapter.notifyDataSetChanged();
@@ -168,12 +181,5 @@ public class MainActivity extends ToolbarActivity<MainPresenter> implements IMai
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public void onRefresh() {
-        isRefresh = true;
-        page = 1;
-        mainPresenter.requestMeiziData(page);
     }
 }

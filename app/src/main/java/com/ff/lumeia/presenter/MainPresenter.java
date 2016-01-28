@@ -12,13 +12,10 @@ import com.ff.lumeia.view.IMainView;
 import com.litesuits.orm.db.assit.QueryBuilder;
 
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Action1;
-import rx.functions.Func2;
 import rx.schedulers.Schedulers;
 
 /**
@@ -42,48 +39,34 @@ public class MainPresenter extends BasePresenter<IMainView> {
         meiziList.addAll(LumeiaApp.myDatabase.query(queryBuilder));
     }
 
-    public void requestMeiziData(int page) {
+    public void requestMeiziData(int page,boolean clean) {
         iView.showProgress();
         subscription = Observable.zip(MyRetrofitClient.getGankServiceInstance().getMeiziData(page),
                 MyRetrofitClient.getGankServiceInstance().getRestingVideoData(page),
-                new Func2<MeiziData, RestingVideoData, MeiziData>() {
-                    @Override
-                    public MeiziData call(MeiziData meiziData, RestingVideoData restingVideoData) {
-                        saveMeiziData(meiziData);
-                        return createMeiziDataWithRestingVideoDesc(meiziData, restingVideoData);
-                    }
+                (meiziData, restingVideoData) -> {
+                    saveMeiziData(meiziData);
+                    return createMeiziDataWithRestingVideoDesc(meiziData, restingVideoData);
                 })
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Action1<MeiziData>() {
-                    @Override
-                    public void call(MeiziData meiziData) {
-                        if (meiziData.results.size() == 0) {
-                            iView.showNoMoreData();
-                        } else {
-                            iView.showMeiziList(meiziData.results);
-                        }
-                        iView.hideProgress();
+                .subscribe(meiziData -> {
+                    if (meiziData.results.size() == 0) {
+                        iView.showNoMoreData();
+                    } else {
+                        iView.showMeiziList(meiziData.results,clean);
                     }
-                }, new Action1<Throwable>() {
-                    @Override
-                    public void call(Throwable throwable) {
-                        if (BuildConfig.DEBUG) {
-                            throwable.printStackTrace();
-                        }
-                        iView.showErrorView();
-                        iView.hideProgress();
+                    iView.hideProgress();
+                }, throwable -> {
+                    if (BuildConfig.DEBUG) {
+                        throwable.printStackTrace();
                     }
+                    iView.showErrorView();
+                    iView.hideProgress();
                 });
     }
 
     private void saveMeiziData(MeiziData meiziData) {
-        Collections.sort(meiziData.results, new Comparator<Meizi>() {
-            @Override
-            public int compare(Meizi meizi, Meizi t1) {
-                return t1.publishedAt.compareTo(meizi.publishedAt);
-            }
-        });
+        Collections.sort(meiziData.results, (meizi, t1) -> t1.publishedAt.compareTo(meizi.publishedAt));
         LumeiaApp.myDatabase.save(meiziData.results);
     }
 
