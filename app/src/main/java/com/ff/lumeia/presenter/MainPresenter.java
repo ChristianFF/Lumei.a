@@ -39,7 +39,7 @@ public class MainPresenter extends BasePresenter<IMainView> {
         meiziList.addAll(LumeiaApp.myDatabase.query(queryBuilder));
     }
 
-    public void requestMeiziData(int page,boolean clean) {
+    public void requestMeiziData(int page, boolean clean) {
         iView.showProgress();
         subscription = Observable.zip(MyRetrofitClient.getGankServiceInstance().getMeiziData(page),
                 MyRetrofitClient.getGankServiceInstance().getRestingVideoData(page),
@@ -53,7 +53,7 @@ public class MainPresenter extends BasePresenter<IMainView> {
                     if (meiziData.results.size() == 0) {
                         iView.showNoMoreData();
                     } else {
-                        iView.showMeiziList(meiziData.results,clean);
+                        iView.showMeiziList(meiziData.results, clean);
                     }
                     iView.hideProgress();
                 }, throwable -> {
@@ -82,7 +82,9 @@ public class MainPresenter extends BasePresenter<IMainView> {
 
     @Override
     public void release() {
-        subscription.unsubscribe();
+        if (subscription != null) {
+            subscription.unsubscribe();
+        }
     }
 
 

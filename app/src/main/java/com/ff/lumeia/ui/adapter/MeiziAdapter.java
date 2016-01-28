@@ -1,21 +1,29 @@
 package com.ff.lumeia.ui.adapter;
 
 import android.animation.ObjectAnimator;
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.ff.lumeia.LumeiaApp;
+import com.ff.lumeia.LumeiaConfig;
 import com.ff.lumeia.R;
 import com.ff.lumeia.model.entity.Meizi;
+import com.ff.lumeia.ui.DailyActivity;
+import com.ff.lumeia.ui.PictureActivity;
 import com.ff.lumeia.util.DateUtils;
 
+import java.io.Serializable;
 import java.util.List;
 
 import butterknife.Bind;
@@ -57,7 +65,7 @@ public class MeiziAdapter extends RecyclerView.Adapter<MeiziAdapter.MeiziViewHol
                 .into(holder.imgMeizi);
 
         holder.textAuthor.setText(meizi.who);
-        holder.textDate.setText(DateUtils.convertDateToString(meizi.publishedAt));
+        holder.textDate.setText(DateUtils.convertDateToZhString(meizi.publishedAt));
         holder.textDesc.setText(meizi.desc);
 
         showItemAnimation(holder, position);
@@ -84,7 +92,7 @@ public class MeiziAdapter extends RecyclerView.Adapter<MeiziAdapter.MeiziViewHol
         return meiziList == null ? 0 : meiziList.size();
     }
 
-    static class MeiziViewHolder extends RecyclerView.ViewHolder {
+    class MeiziViewHolder extends RecyclerView.ViewHolder {
 
         @Bind(R.id.img_meizi)
         ImageView imgMeizi;
@@ -94,17 +102,25 @@ public class MeiziAdapter extends RecyclerView.Adapter<MeiziAdapter.MeiziViewHol
         TextView textDate;
         @Bind(R.id.text_desc)
         TextView textDesc;
-        @Bind(R.id.layout_text)
-        RelativeLayout layoutText;
 
         @OnClick(R.id.img_meizi)
         void onMeiziClick() {
-            //TODO go to meizi activity
+            LumeiaApp.meiziDeliverDrawable = imgMeizi.getDrawable();
+            Intent intent = new Intent(context, PictureActivity.class);
+            intent.putExtra(LumeiaConfig.MEIZHI_PIC, (Serializable) itemView.getTag());
+            ActivityOptionsCompat optionsCompat = ActivityOptionsCompat
+                    .makeSceneTransitionAnimation((Activity) context, imgMeizi, LumeiaConfig.IMG_TRANSITION_NAME);
+            ActivityCompat.startActivity((Activity) context, intent, optionsCompat.toBundle());
         }
 
         @OnClick(R.id.layout_text)
         void textClick() {
-            //TODO go to gank activity
+            LumeiaApp.meiziDeliverDrawable = imgMeizi.getDrawable();
+            Intent intent = new Intent(context, DailyActivity.class);
+            intent.putExtra(LumeiaConfig.MEIZHI_PIC, (Serializable) itemView.getTag());
+            ActivityOptionsCompat optionsCompat = ActivityOptionsCompat.
+                    makeSceneTransitionAnimation((Activity) context, imgMeizi, LumeiaConfig.IMG_TRANSITION_NAME);
+            ActivityCompat.startActivity((Activity) context, intent, optionsCompat.toBundle());
         }
 
         public MeiziViewHolder(View itemView) {

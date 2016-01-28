@@ -1,5 +1,6 @@
 package com.ff.lumeia.ui;
 
+import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -123,8 +124,9 @@ public class MainActivity extends ToolbarActivity<MainPresenter> implements IMai
     }
 
     @Override
-    public void goPictureActivity() {
-
+    public void goAboutActivity() {
+        Intent intent = new Intent(MainActivity.this, AboutActivity.class);
+        startActivity(intent);
     }
 
     @Override
@@ -175,11 +177,18 @@ public class MainActivity extends ToolbarActivity<MainPresenter> implements IMai
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.about: {
+                goAboutActivity();
+                return true;
+            }
+        }
         return super.onOptionsItemSelected(item);
     }
 }

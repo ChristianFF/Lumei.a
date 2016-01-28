@@ -24,11 +24,30 @@
             android:screenOrientation="portrait">
             <intent-filter>
                 <action
-                    android:name="android.intent.action.MAIN"
-                    android:theme="@style/Theme.AppCompat.Light.NoActionBar.FF"/>
+                    android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.PictureActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".ui.GankActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".ui.DailyActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".ui.AboutActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait">
         </activity>
     </application>
 
