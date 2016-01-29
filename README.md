@@ -1,7 +1,7 @@
 # Lumei.a
 > 干货集中营第三方客户端
 
-![icon](/app/src/main/res/mipmap-xxxhdpi/lumeia.png)
+![icon](/app/src/main/res/mipmap-hdpi/lumeia.png)
 
 #### 项目介绍:
 
@@ -29,16 +29,34 @@
      * Copyright (C) 2016 Panl <panlei106@gmail.com>
      * CopyRight (C) 2016 ChristianFF <feifan0322@gmail.com>
      *
-     * Meizhi is free software: you can redistribute it and/or modify
+     * Lumei.a is free software: you can redistribute it and/or modify
      * it under the terms of the GNU General Public License as published by
      * the Free Software Foundation, either version 3 of the License, or
      * (at your option) any later version.
      *
-     * Meizhi is distributed in the hope that it will be useful,
+     * Lumei.a is distributed in the hope that it will be useful,
      * but WITHOUT ANY WARRANTY; without even the implied warranty of
      * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
      * GNU General Public License for more details.
      *
      * You should have received a copy of the GNU General Public License
-     * along with Meizhi.  If not, see <http://www.gnu.org/licenses/>.
+     * along with Lumei.a.  If not, see <http://www.gnu.org/licenses/>.
      */
+
+#### ScreenShot
+
+![screenshot](/screenshot/main.png)
+![screenshot](/screenshot/gank.png)
+![screenshot](/screenshot/meizi.png)
+![screenshot](/screenshot/dailyGank.png)
+
+#### TODO
+- [x] 主界面基本框架
+- [x] 每日干货界面基本框架
+- [x] 妹子界面基本框架
+- [x] 纯干货界面基本框架
+- [ ] 视频播放界面基本框架,考虑使用ijkplayer
+- [ ] 关于界面基本框架
+- [ ] 每日定时提醒
+- [ ] 纯妹子流界面基本框架
+- [ ] 首次启动应用打开Github登陆界面,可选择跳过以后登录
