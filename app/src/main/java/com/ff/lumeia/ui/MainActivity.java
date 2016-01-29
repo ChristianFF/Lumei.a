@@ -131,18 +131,19 @@ public class MainActivity extends ToolbarActivity<MainPresenter> implements IMai
 
     @Override
     public void goGankActivity() {
-
+        Intent intent = new Intent(this, GankActivity.class);
+        startActivity(intent);
     }
 
     @Override
-    public void showProgress() {
+    public void showProgressBar() {
         if (!swipeRefreshLayout.isRefreshing()) {
             swipeRefreshLayout.setRefreshing(true);
         }
     }
 
     @Override
-    public void hideProgress() {
+    public void hideProgressBar() {
         if (swipeRefreshLayout.isRefreshing()) {
             swipeRefreshLayout.setRefreshing(false);
         }

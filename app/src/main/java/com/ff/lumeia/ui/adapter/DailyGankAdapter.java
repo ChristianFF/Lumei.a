@@ -37,7 +37,7 @@ public class DailyGankAdapter extends AnimRecyclerViewAdapter<DailyGankAdapter.D
 
     @Override
     public DailyGankViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_gank, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_gank_daily, parent, false);
         return new DailyGankViewHolder(view);
     }
 

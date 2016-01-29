@@ -14,4 +14,5 @@ public class LumeiaConfig {
 
     public static final String URL_COPY = "url_copy";
     public static final String IMG_TRANSITION_NAME = "img_transition_name";
+    public static final String TYPE = "type";
 }

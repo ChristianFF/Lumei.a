@@ -14,9 +14,9 @@ public interface IMainView extends IBaseView {
 
     void goGankActivity();
 
-    void showProgress();
+    void showProgressBar();
 
-    void hideProgress();
+    void hideProgressBar();
 
     void showErrorView();
 

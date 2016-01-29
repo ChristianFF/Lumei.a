@@ -12,8 +12,8 @@ import com.ff.lumeia.R;
 public class AnimRecyclerViewAdapter<T extends RecyclerView.ViewHolder>
         extends RecyclerView.Adapter<T> {
 
-    private static final int DELAY = 138;
-    private int mLastPosition = -1;
+    private static final int DELAY = 128;
+    private int lastPosition = -1;
 
 
     @Override
@@ -35,7 +35,7 @@ public class AnimRecyclerViewAdapter<T extends RecyclerView.ViewHolder>
 
     public void showItemAnim(final View view, final int position) {
         Context context = view.getContext();
-        if (position > mLastPosition) {
+        if (position > lastPosition) {
             view.setAlpha(0);
             view.postDelayed(() -> {
                 Animation animation = AnimationUtils.loadAnimation(context,
@@ -58,7 +58,7 @@ public class AnimRecyclerViewAdapter<T extends RecyclerView.ViewHolder>
                 });
                 view.startAnimation(animation);
             }, DELAY * position);
-            mLastPosition = position;
+            lastPosition = position;
         }
     }
 }
