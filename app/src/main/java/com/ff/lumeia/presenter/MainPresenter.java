@@ -40,7 +40,7 @@ public class MainPresenter extends BasePresenter<IMainView> {
     }
 
     public void requestMeiziData(int page, boolean clean) {
-        iView.showProgress();
+        iView.showProgressBar();
         subscription = Observable.zip(MyRetrofitClient.getGankServiceInstance().getMeiziData(page),
                 MyRetrofitClient.getGankServiceInstance().getRestingVideoData(page),
                 (meiziData, restingVideoData) -> {
@@ -50,18 +50,18 @@ public class MainPresenter extends BasePresenter<IMainView> {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(meiziData -> {
+                    iView.hideProgressBar();
                     if (meiziData.results.size() == 0) {
                         iView.showNoMoreData();
                     } else {
                         iView.showMeiziList(meiziData.results, clean);
                     }
-                    iView.hideProgress();
                 }, throwable -> {
                     if (BuildConfig.DEBUG) {
                         throwable.printStackTrace();
                     }
+                    iView.hideProgressBar();
                     iView.showErrorView();
-                    iView.hideProgress();
                 });
     }
 

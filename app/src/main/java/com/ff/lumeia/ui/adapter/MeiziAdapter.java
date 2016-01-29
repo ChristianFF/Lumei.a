@@ -107,7 +107,7 @@ public class MeiziAdapter extends RecyclerView.Adapter<MeiziAdapter.MeiziViewHol
         void onMeiziClick() {
             LumeiaApp.meiziDeliverDrawable = imgMeizi.getDrawable();
             Intent intent = new Intent(context, PictureActivity.class);
-            intent.putExtra(LumeiaConfig.MEIZHI_PIC, (Serializable) itemView.getTag());
+            intent.putExtra(LumeiaConfig.MEIZI, (Serializable) itemView.getTag());
             ActivityOptionsCompat optionsCompat = ActivityOptionsCompat
                     .makeSceneTransitionAnimation((Activity) context, imgMeizi, LumeiaConfig.IMG_TRANSITION_NAME);
             ActivityCompat.startActivity((Activity) context, intent, optionsCompat.toBundle());
@@ -117,7 +117,7 @@ public class MeiziAdapter extends RecyclerView.Adapter<MeiziAdapter.MeiziViewHol
         void textClick() {
             LumeiaApp.meiziDeliverDrawable = imgMeizi.getDrawable();
             Intent intent = new Intent(context, DailyActivity.class);
-            intent.putExtra(LumeiaConfig.MEIZHI_PIC, (Serializable) itemView.getTag());
+            intent.putExtra(LumeiaConfig.MEIZI, (Serializable) itemView.getTag());
             ActivityOptionsCompat optionsCompat = ActivityOptionsCompat.
                     makeSceneTransitionAnimation((Activity) context, imgMeizi, LumeiaConfig.IMG_TRANSITION_NAME);
             ActivityCompat.startActivity((Activity) context, intent, optionsCompat.toBundle());

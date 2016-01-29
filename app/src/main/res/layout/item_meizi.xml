@@ -24,13 +24,15 @@
             android:id="@+id/layout_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/normal_spacing">
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:layout_marginStart="@dimen/normal_spacing"
+            android:layout_marginBottom="@dimen/normal_spacing">
 
             <TextView
                 android:id="@+id/text_author"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/normal_spacing"
+                android:layout_marginStart="@dimen/normal_spacing"
                 android:textAppearance="@style/TextAppearance.Title.FF"/>
 
             <TextView
@@ -38,7 +40,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignBaseline="@id/text_author"
-                android:layout_margin="@dimen/normal_spacing"
+                android:layout_marginStart="@dimen/normal_spacing"
                 android:layout_toEndOf="@id/text_author"
                 android:textAppearance="@style/TextAppearance.SubTitle.FF"/>
 
@@ -47,7 +49,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/text_author"
-                android:layout_margin="@dimen/normal_spacing"
+                android:layout_marginStart="@dimen/normal_spacing"
                 android:textAppearance="@style/TextAppearance.Body1.FF"/>
 
         </RelativeLayout>

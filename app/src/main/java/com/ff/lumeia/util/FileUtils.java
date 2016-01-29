@@ -1,11 +1,15 @@
 package com.ff.lumeia.util;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Environment;
 import android.util.Log;
 
 import com.ff.lumeia.BuildConfig;
+import com.ff.lumeia.LumeiaConfig;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -45,5 +49,12 @@ public class FileUtils {
             return null;
         }
         return Uri.fromFile(file);
+    }
+
+    public static boolean copyToClipBoard(Context context, String text) {
+        ClipData clipData = ClipData.newPlainText(LumeiaConfig.URL_COPY, text);
+        ClipboardManager manager = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
+        manager.setPrimaryClip(clipData);
+        return manager.hasPrimaryClip();
     }
 }
