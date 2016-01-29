@@ -10,5 +10,8 @@ public class LumeiaConfig {
     public static final int GANK_SIZE = 20;
 
     public static final String MEIZI = "meizi";
+    public static final String GANK = "gank";
+
+    public static final String URL_COPY = "url_copy";
     public static final String IMG_TRANSITION_NAME = "img_transition_name";
 }

@@ -64,24 +64,29 @@ public class DailyActivity extends ToolbarActivity<DailyPresenter> implements ID
         fabPlay.setClickable(false);
         getIntentData();
         initGankData();
+        initRecyclerView();
         initImg();
     }
 
     private void getIntentData() {
         meizi = (Meizi) getIntent().getSerializableExtra(LumeiaConfig.MEIZI);
-        calendar = Calendar.getInstance();
-        calendar.setTime(meizi.publishedAt);
+
     }
 
     private void initGankData() {
         gankList = new ArrayList<>();
+        calendar = Calendar.getInstance();
+        calendar.setTime(meizi.publishedAt);
         dailyPresenter.requestDailyGankData(calendar.get(Calendar.YEAR),
                 calendar.get(Calendar.MONTH) + 1,
                 calendar.get(Calendar.DAY_OF_MONTH));
+        collapsingLayout.setTitle(meizi.desc);
+    }
+
+    private void initRecyclerView() {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(context,
                 LinearLayoutManager.VERTICAL,
                 false);
-
         dailyGankAdapter = new DailyGankAdapter(context, gankList);
         recyclerViewDaily.setLayoutManager(layoutManager);
         recyclerViewDaily.setAdapter(dailyGankAdapter);

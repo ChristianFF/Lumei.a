@@ -1,6 +1,7 @@
 package com.ff.lumeia.ui.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -8,9 +9,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.ff.lumeia.LumeiaConfig;
 import com.ff.lumeia.R;
 import com.ff.lumeia.model.entity.Gank;
+import com.ff.lumeia.ui.WebActivity;
 
+import java.io.Serializable;
 import java.util.List;
 
 import butterknife.Bind;
@@ -81,7 +85,9 @@ public class DailyGankAdapter extends AnimRecyclerViewAdapter<DailyGankAdapter.D
 
         @OnClick(R.id.card_link)
         void cardClick() {
-
+            Intent intent = new Intent(context, WebActivity.class);
+            intent.putExtra(LumeiaConfig.GANK, (Serializable) itemView.getTag());
+            context.startActivity(intent);
         }
 
         public DailyGankViewHolder(View itemView) {
